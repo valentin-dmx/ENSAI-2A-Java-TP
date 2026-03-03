@@ -67,9 +67,29 @@ public class Password {
      */
     public static boolean isStrongPassword(String password) {
 
-        // Code here
+        int lenpassword = password.length();
+        Boolean minlength = lenpassword >= 12;
+        Boolean oneupp = false;
+        Boolean onelow = false;
+        Boolean onedig = false;
+        Boolean onewhi = false;
+        for (int i = 0; i < lenpassword; i++) {
+            Character charpassword = password.charAt(i);
+            if (Character.isUpperCase(charpassword)) {
+                oneupp = true;
+            }
+            if (Character.isLowerCase(charpassword)) {
+                onelow = true;
+            }
+            if (Character.isDigit(charpassword)) {
+                onedig = true;
+            }
+            if (Character.isWhitespace(charpassword)) {
+                onewhi = true;
+            }
+        }
 
-        return false;
+        return minlength && oneupp && onelow && onedig && !onewhi;
     }
 
     /**
