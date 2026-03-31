@@ -3,18 +3,17 @@ import java.util.List;
 import java.util.Objects;
 
 import fr.ensai.mediaplayer.Artist;
+import fr.ensai.mediaplayer.MusicalGenres;
 
 /**
  * Represents a song with essential attributes.
  */
-public class Song {
+public class Song extends Media{
     private Artist singer;
-    private String title;
-    private int year;
-    private int duration;
     private String lyrics;
     private Artist author;
     private Artist composer;
+    private MusicalGenres genres;
 
     /**
      * Constructs a new Song object.
@@ -27,8 +26,10 @@ public class Song {
      * @param lyrics   The lyrics of the song.
      * @param author   The author of the song.
      * @param composer The composer of the song.
+     * @param genres   The genres of the song.
      */
-    public Song(String title, Artist singer, int year, int duration, String lyrics, Artist author, Artist composer) {
+    public Song(String title, Artist singer, int year, int duration, String lyrics, Artist author, Artist compose, List<MusicalGenres> genres) {
+        super(title, year, duration);
         this.title = title;
         this.singer = singer;
         this.year = year;
@@ -36,6 +37,7 @@ public class Song {
         this.lyrics = lyrics;
         this.author = author;
         this.composer = composer;
+        this.genres = genres;
     }
 
     /**
@@ -67,21 +69,9 @@ public class Song {
         return Objects.hash(this.title, this.singer, this.year);
     }
 
-    /**
-     * Print the lyrics of the song
-     */
-    public void play() {
-        String[] words = this.lyrics.split(" ");
-        for (String word : words) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                System.err.println("Thread was interrupted");
-            }
-            System.out.println(word);
-        }
-        
+    @Override
+    public String getText() {
+        return(this.lyrics);
     }
 
 }
