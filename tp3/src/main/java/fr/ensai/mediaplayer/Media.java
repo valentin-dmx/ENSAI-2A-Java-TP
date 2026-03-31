@@ -26,8 +26,6 @@ public abstract class Media {
 
     protected abstract String getText();
 
-    protected abstract String toString ();
-
     public void play() {
         String text = this.getText();
 
@@ -46,5 +44,9 @@ public abstract class Media {
             }
         }
         return;
+    }
+
+    public int getDuration(Media media) {
+        return this.duration;
     }
 }

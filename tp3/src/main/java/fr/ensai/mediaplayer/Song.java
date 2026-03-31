@@ -13,7 +13,7 @@ public class Song extends Media{
     private String lyrics;
     private Artist author;
     private Artist composer;
-    private MusicalGenres genres;
+    private List<MusicalGenres> genres;
 
     /**
      * Constructs a new Song object.
@@ -28,7 +28,7 @@ public class Song extends Media{
      * @param composer The composer of the song.
      * @param genres   The genres of the song.
      */
-    public Song(String title, Artist singer, int year, int duration, String lyrics, Artist author, Artist compose, List<MusicalGenres> genres) {
+    public Song(String title, Artist singer, int year, int duration, String lyrics, Artist author, Artist composer, List<MusicalGenres> genres) {
         super(title, year, duration);
         this.title = title;
         this.singer = singer;
