@@ -113,4 +113,12 @@ public class Floor {
         }
         return sb.toString();
     }
+
+    public static List<Floor> createListFloors(int nbFloors) {
+        List<Floor> floors = new ArrayList<>();
+        for (int i = 0; i < nbFloors; i++) {
+            floors.add(new Floor(i));
+        }
+        return(floors);
+    }
 }

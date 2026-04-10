@@ -179,4 +179,12 @@ public class Elevator {
         return "[" + padded + "]" +
                 (unloaded.isBlank() ? "" : " " + unloaded);
     }
+
+    public static List<Elevator> createListElevators(int nbElevators, int elevatorCapacity) {
+        List<Elevator> elevators = new ArrayList<>();
+        for (int i = 0; i < nbElevators; i++) {
+            elevators.add(new Elevator(i, 0, elevatorCapacity));
+        }
+        return(elevators);
+    }
 }

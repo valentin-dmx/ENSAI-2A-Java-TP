@@ -19,16 +19,15 @@ public class Main {
         final int elevatorCapacity = Config.getInt("hotel.elevator.capacity");
         final int nbSteps = Config.getInt("steps.count");
         final int msBetweenSteps = Config.getInt("steps.delay");
+        final int nbFloorsBase = Config.getInt("hotel.floor.base-number");
+        final int nbElevatorsBase = Config.getInt("hotel.elevator.base-number");
 
-        List<Floor> floors = new ArrayList<>();
-        floors.add(new Floor(0));
-        floors.add(new Floor(1));
-        floors.add(new Floor(2));
-        floors.add(new Floor(3));
+        /**
+         * A modifier pour faire une boucle for dans main
+        */
+        List<Floor> floors = Floor.createListFloors(nbFloorsBase);
 
-        List<Elevator> elevators = new ArrayList<>();
-        elevators.add(new Elevator(1, 0, elevatorCapacity));
-        elevators.add(new Elevator(2, 0, elevatorCapacity));
+        List<Elevator> elevators = Elevator.createListElevators(nbElevatorsBase, elevatorCapacity);
 
         Hotel hotel = new Hotel(floors, elevators);
 
