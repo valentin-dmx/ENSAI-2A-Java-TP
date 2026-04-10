@@ -45,7 +45,11 @@ public class Person {
      * 
      * @return the target floor number
      */
-    private static int generateTargetFloor() {
+    private int generateTargetFloor() {
+        int targetFloor = random.nextInt(nbFloors);
+        while (targetFloor == this.startFloor) {
+            targetFloor = random.nextInt(nbFloors);
+        }
         return random.nextInt(nbFloors);
     }
 
