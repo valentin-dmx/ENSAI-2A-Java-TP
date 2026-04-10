@@ -50,6 +50,10 @@ public class Elevator {
         return this.currentFloor;
     }
 
+    public int getNextDestination() {
+        return this.destinationQueue.get(0);
+    }
+
     /**
      * Checks if the elevator has the specified floor in its destination queue.
      * 
@@ -190,5 +194,9 @@ public class Elevator {
 
     public boolean isFull() {
         return (this.capacity == this.passengers.size());
+    }
+
+    public int nbPassengers() {
+        return this.passengers.size();
     }
 }

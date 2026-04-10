@@ -1,6 +1,8 @@
 package fr.ensai.elevator;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -40,14 +42,14 @@ public class Floor {
         return this.number;
     }
 
-    
+
 
     /**
      * Removes and returns the next person in the waiting queue.
      * 
      * @return the next Person to board an elevator, or null if no one is waiting
      */
-    public Person boardNextPerson() {
+        public Person boardNextPerson() {
         if (this.waitingPeople.isEmpty()) {
             return null;
         }
@@ -78,7 +80,28 @@ public class Floor {
      * @param elevators the list of elevators available in the hotel
      */
     public void requestElevator(List<Elevator> elevators) {
-        elevators.get(0).addDestination(this.number);
+        boolean elevatorComing = false;
+
+        for (Elevator e: elevators) {
+            if (e.getNextDestination() == this.number) {
+                elevatorComing = true;
+            }
+        }
+        
+        if (elevatorComing) {
+            return;
+        }
+
+        int size_min = 100000;
+        int idElevatorLeastBusy = 0;
+
+        for (Elevator e: elevators) {
+            if (size_min > e.getDestinationQueueSize()) {
+                size_min = e.getDestinationQueueSize();
+                idElevatorLeastBusy = e.getId();
+            }
+        }
+        elevators.get(idElevatorLeastBusy).addDestination(this.number);
     }
 
     /**
