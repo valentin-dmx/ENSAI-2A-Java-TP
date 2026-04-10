@@ -40,6 +40,8 @@ public class Floor {
         return this.number;
     }
 
+    
+
     /**
      * Removes and returns the next person in the waiting queue.
      * 

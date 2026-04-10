@@ -16,6 +16,8 @@ public class Person {
 
     private static Random random = new Random();
 
+    public static int nbFloors = Config.getInt("hotel.elevator.base-number");
+
     /**
      * Constructs a new Person starting at the specified floor.
      * 
@@ -44,7 +46,7 @@ public class Person {
      * @return the target floor number
      */
     private static int generateTargetFloor() {
-        return random.nextInt(4);
+        return random.nextInt(nbFloors);
     }
 
     public String getNickname() {
