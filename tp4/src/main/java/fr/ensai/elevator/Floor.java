@@ -75,7 +75,7 @@ public class Floor {
 
     /**
      * Press the button to call the first elevator.
-     * Requests the first elevator to stop at this floor.
+     * Stops if an elevator is coming at this floor, or requests the least busy one.
      * 
      * @param elevators the list of elevators available in the hotel
      */
@@ -139,11 +139,4 @@ public class Floor {
         return sb.toString();
     }
 
-    public static List<Floor> createListFloors(int nbFloors) {
-        List<Floor> floors = new ArrayList<>();
-        for (int i = 0; i < nbFloors; i++) {
-            floors.add(new Floor(i));
-        }
-        return(floors);
-    }
 }

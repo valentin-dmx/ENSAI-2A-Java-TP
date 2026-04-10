@@ -17,14 +17,14 @@ import org.apache.logging.log4j.Logger;
  */
 public class Elevator {
 
-    private static final Logger logger = LogManager.getLogger(Elevator.class);
+    protected static final Logger logger = LogManager.getLogger(Elevator.class);
 
-    private int id;
-    private int capacity;
-    private int currentFloor;
-    private List<Integer> destinationQueue;
-    private List<Person> passengers;
-    private List<Person> lastUnloaded;
+    protected int id;
+    protected int capacity;
+    protected int currentFloor;
+    protected List<Integer> destinationQueue;
+    protected List<Person> passengers;
+    protected List<Person> lastUnloaded;
 
     /**
      * Constructs a new Elevator with the specified parameters.
@@ -184,18 +184,16 @@ public class Elevator {
                 (unloaded.isBlank() ? "" : " " + unloaded);
     }
 
-    public static List<Elevator> createListElevators(int nbElevators, int elevatorCapacity) {
-        List<Elevator> elevators = new ArrayList<>();
-        for (int i = 0; i < nbElevators; i++) {
-            elevators.add(new Elevator(i, 0, elevatorCapacity));
-        }
-        return(elevators);
-    }
-
+    /**
+     * Renvoie un booléen indiquant si l'ascenseur est plein.
+    */
     public boolean isFull() {
         return (this.capacity == this.passengers.size());
     }
 
+    /**
+     * Renvoie le nombre de passagers dans l'ascenseur.
+     */
     public int nbPassengers() {
         return this.passengers.size();
     }

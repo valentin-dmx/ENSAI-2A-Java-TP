@@ -22,12 +22,14 @@ public class Main {
         final int nbFloorsBase = Config.getInt("hotel.floor.base-number");
         final int nbElevatorsBase = Config.getInt("hotel.elevator.base-number");
 
-        /**
-         * A modifier pour faire une boucle for dans main
-        */
-        List<Floor> floors = Floor.createListFloors(nbFloorsBase);
+        List<Floor> floors = new ArrayList<>();
+        for (int i = 0; i < nbFloorsBase; i++) {
+            floors.add(new Floor(i));
+        }
 
-        List<Elevator> elevators = Elevator.createListElevators(nbElevatorsBase, elevatorCapacity);
+        List<Elevator> elevators = new ArrayList<>();
+        for (int i = 0; i < nbElevatorsBase; i++) {
+            elevators.add(new Elevator(i, 0, elevatorCapacity));}
 
         Hotel hotel = new Hotel(floors, elevators);
 
@@ -43,6 +45,6 @@ public class Main {
             hotel.display(step);
             Thread.sleep(msBetweenSteps);
         }
+    
     }
-
 }
